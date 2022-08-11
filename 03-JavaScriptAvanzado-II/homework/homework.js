@@ -25,6 +25,7 @@ function counter() {
         return acumulador;
     }
 
+
 }
 
 function cacheFunction(cb) {

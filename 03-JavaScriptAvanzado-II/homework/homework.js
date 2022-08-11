@@ -94,7 +94,7 @@ let getNombreAlumno = getNombre.bind(alumno);
 function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
     return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
-
+//Chek
 
 let textoAsteriscos = crearCadena.bind(null, '*', '*');
 let textoGuiones = crearCadena.bind(null, '-', '-');

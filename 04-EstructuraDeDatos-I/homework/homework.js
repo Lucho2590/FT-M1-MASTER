@@ -34,10 +34,9 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
   - enqueue: agrega un valor respetando el orden.
   - dequeue: remueve un valor respetando el orden. Retorna undefined cuando la queue está vacía.
   - size: retorna el tamaño (cantidad de elementos) de la queue.
-
+ 
 Pueden utilizar class o función constructora.
 */
-
 
 class Queue {
     constructor() {

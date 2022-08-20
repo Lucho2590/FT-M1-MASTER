@@ -1,5 +1,8 @@
 "use strict";
 
+const { remove } = require("@11ty/eleventy/src/TemplateCache");
+const { SearchSource } = require("jest");
+
 /*
 Implementar la clase LinkedList, definiendo los siguientes métodos:
   - add: agrega un nuevo nodo al final de la lista;
@@ -11,9 +14,62 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
 
-function LinkedList() {}
+function LinkedList() {
+    this.head = null;
+}
 
-function Node(value) {}
+function Node(data) {
+    this.value = data;
+    this.next = null;
+}
+LinkedList.prototype.add = function(value) {
+    let node = new Node(value);
+    if (!this.head) { // this.head === null;
+        this.head = node;
+    } else {
+        let current = this.head;
+        while (current.next) {
+            current = current.next;
+        }
+        current.next = node;
+    }
+}
+LinkedList.prototype.remove = function() {
+    let current = this.head;
+    if (!current) return null;
+    if (!current.next) { // current.next == null 
+        let save = current.value;
+        this.head = null
+        return save;
+    }
+    if (!current) return null;
+    while (current.next.next) {
+        current = current.next;
+    }
+    let save = current.next.value;
+    current.next = null;
+    return save;
+}
+LinkedList.prototype.search = function(value) {
+    if (!this.head) return null;
+
+    this.current = this.head;
+
+    while (this.current) {
+        if (this.current.value == value) {
+            return this.current.value;
+        }
+        if (typeof value == "function") {
+            if (value(this.current.value)) {
+                return this.current.value;
+            }
+        }
+        this.current = this.current.next;
+    }
+    return null
+
+
+}
 
 /*
 Implementar la clase HashTable.
@@ -30,13 +86,30 @@ La clase debe tener los siguientes métodos:
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
 
-function HashTable() {}
+class HashTable {
+    constructor() {
+        this.numBuckets = 35;
+        this.buckets = [];
+    }
 
+    hash() {
+
+    }
+    set() {
+
+    }
+    get() {
+
+    }
+    hasKey() {
+
+    }
+}
 // No modifiquen nada debajo de esta linea
 // --------------------------------
 
 module.exports = {
-  Node,
-  LinkedList,
-  HashTable,
+    Node,
+    LinkedList,
+    HashTable,
 };

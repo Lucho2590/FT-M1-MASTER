@@ -66,7 +66,8 @@ LinkedList.prototype.search = function(value) {
         }
         this.current = this.current.next;
     }
-    return null
+    return null;
+
 
 
 }
